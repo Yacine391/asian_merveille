@@ -16,6 +16,7 @@ const flavors = [
     cardBg: "linear-gradient(145deg, #ff8fa3 0%, #ff3d5a 60%, #c0392b 100%)",
     canIndex: 0,
     ml: "250ml",
+    fruitSrc: "https://images.unsplash.com/photo-1563114773-84221bd62daa?w=200&q=80",
   },
   {
     name: "Ananas",
@@ -29,6 +30,7 @@ const flavors = [
     canIndex: 1,
     ml: "250ml",
     featured: true,
+    fruitSrc: "https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?w=200&q=80",
   },
   {
     name: "Raisin",
@@ -41,6 +43,7 @@ const flavors = [
     cardBg: "linear-gradient(145deg, #c4b5fd 0%, #8b5cf6 55%, #6d28d9 100%)",
     canIndex: 2,
     ml: "260ml",
+    fruitSrc: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=200&q=80",
   },
 ];
 
@@ -121,14 +124,38 @@ function FlavorCard({ f, i }: { f: (typeof flavors)[number]; i: number }) {
         </motion.div>
       )}
 
-      {/* ── Can image (CSS crop) ── */}
-      <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 3.2 + i * 0.3, repeat: Infinity, ease: "easeInOut" }}
-        className="relative z-10 mt-4"
-      >
-        <CanImage canIndex={f.canIndex as 0 | 1 | 2} />
-      </motion.div>
+      {/* ── Can image + fruit accent ── */}
+      <div className="relative z-10 mt-4">
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 3.2 + i * 0.3, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <CanImage canIndex={f.canIndex as 0 | 1 | 2} />
+        </motion.div>
+        {/* Fruit photo accent — bottom-right of can area */}
+        {f.fruitSrc && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5, delay: i * 0.14 + 0.3 }}
+            className="absolute bottom-2 right-4 z-20"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={f.fruitSrc}
+              alt={f.name}
+              style={{
+                width: "80px",
+                height: "80px",
+                objectFit: "cover",
+                borderRadius: "50%",
+                border: "3px solid rgba(255,255,255,0.4)",
+                filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.25))",
+              }}
+            />
+          </motion.div>
+        )}
+      </div>
 
       {/* ── Info ── */}
       <div className="relative z-10 p-6 flex flex-col flex-1">

@@ -30,12 +30,12 @@ export default function Hero() {
           style={{ background: "linear-gradient(90deg,#ff3d5a,#f5c400,#22c55e,#06b6d4,#8b5cf6)" }} />
       </div>
 
-      {/* ── Watermelon photo — LEFT ── */}
+      {/* ── Watermelon slice — LEFT ── */}
       <motion.div
         className="absolute pointer-events-none z-10"
-        style={{ bottom: "8%", left: "-40px" }}
-        initial={{ x: -340, opacity: 0, rotate: -15 }}
-        animate={{ x: 0, opacity: 1, rotate: -8 }}
+        style={{ top: "18%", left: "-20px" }}
+        initial={{ x: -280, opacity: 0, rotate: 15 }}
+        animate={{ x: 0, opacity: 1, rotate: 8 }}
         transition={{ type: "spring", stiffness: 55, damping: 14, delay: 0.3 }}
       >
         <motion.div
@@ -43,46 +43,22 @@ export default function Hero() {
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         >
           <Image
-            src="https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=480&q=85"
-            alt="Pastèque fraîche"
-            width={280}
-            height={280}
+            src="https://images.unsplash.com/photo-1563114773-84221bd62daa?w=480&q=85"
+            alt="Pastèque fraîche tranchée"
+            width={260}
+            height={260}
             className="rounded-2xl object-cover drop-shadow-2xl"
-            style={{ width: "clamp(180px, 18vw, 280px)", height: "auto" }}
+            style={{ width: "clamp(160px, 16vw, 260px)", height: "auto" }}
           />
         </motion.div>
       </motion.div>
 
-      {/* ── Leaf — LEFT, above watermelon ── */}
+      {/* ── Grape cluster — RIGHT ── */}
       <motion.div
         className="absolute pointer-events-none z-10"
-        style={{ bottom: "38%", left: "20px" }}
-        initial={{ x: -200, opacity: 0, rotate: 20 }}
-        animate={{ x: 0, opacity: 1, rotate: 15 }}
-        transition={{ type: "spring", stiffness: 60, damping: 14, delay: 0.6 }}
-      >
-        <motion.div
-          animate={{ y: [0, -8, 0], rotate: [15, 20, 15] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <svg width="70" height="120" viewBox="0 0 55 100" fill="none" aria-hidden="true">
-            <path d="M27 100 Q-2 72 4 42 Q10 14 27 0 Q44 14 50 42 Q56 72 27 100Z" fill="#22c55e" />
-            <path d="M27 100 Q6 72 10 42 Q14 22 27 4 Z" fill="#16a34a" opacity="0.4" />
-            <path d="M27 0 L27 100" stroke="#15803d" strokeWidth="2" />
-            <path d="M27 28 Q14 22 11 32" stroke="#15803d" strokeWidth="1.5" strokeLinecap="round" />
-            <path d="M27 46 Q40 40 43 50" stroke="#15803d" strokeWidth="1.5" strokeLinecap="round" />
-            <path d="M27 64 Q14 58 12 68" stroke="#15803d" strokeWidth="1.5" strokeLinecap="round" />
-            <path d="M27 80 Q40 74 42 84" stroke="#15803d" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </motion.div>
-      </motion.div>
-
-      {/* ── Grape photo — RIGHT, bottom ── */}
-      <motion.div
-        className="absolute pointer-events-none z-10"
-        style={{ bottom: "6%", right: "-30px" }}
-        initial={{ x: 340, opacity: 0, rotate: 10 }}
-        animate={{ x: 0, opacity: 1, rotate: 6 }}
+        style={{ top: "55%", right: "-20px" }}
+        initial={{ x: 280, opacity: 0, rotate: -10 }}
+        animate={{ x: 0, opacity: 1, rotate: -6 }}
         transition={{ type: "spring", stiffness: 55, damping: 14, delay: 0.2 }}
       >
         <motion.div
@@ -90,12 +66,12 @@ export default function Hero() {
           transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
           <Image
-            src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=480&q=85"
+            src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=480&q=85"
             alt="Grappe de raisin"
             width={260}
             height={260}
             className="rounded-2xl object-cover drop-shadow-2xl"
-            style={{ width: "clamp(160px, 17vw, 260px)", height: "auto" }}
+            style={{ width: "clamp(160px, 16vw, 260px)", height: "auto" }}
           />
         </motion.div>
       </motion.div>
@@ -103,7 +79,7 @@ export default function Hero() {
       {/* ── Pineapple — RIGHT, top ── */}
       <motion.div
         className="absolute pointer-events-none z-10"
-        style={{ top: "14%", right: "30px" }}
+        style={{ top: "12%", right: "30px" }}
         initial={{ x: 200, opacity: 0, rotate: -12 }}
         animate={{ x: 0, opacity: 1, rotate: -8 }}
         transition={{ type: "spring", stiffness: 60, damping: 14, delay: 0.5 }}
@@ -184,24 +160,35 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* ── 3 Cans — center ── */}
+        {/* ── 3 Cans individuelles côte à côte ── */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
-          className="relative w-full max-w-xs sm:max-w-sm mx-auto my-2"
+          className="relative flex items-end justify-center gap-1 sm:gap-3 mx-auto my-2"
         >
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Image
-              src="/images/cans-only.png"
-              alt="Les trois saveurs Asian Merveille : Pastèque, Ananas et Raisin"
-              width={486}
-              height={530}
-              priority
-              className="w-full h-auto drop-shadow-2xl"
+          <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/can-crop-watermelon.png"
+              alt="Canette Pastèque Asian Merveille"
+              style={{ height: "clamp(200px, 26vw, 300px)", width: "auto", filter: "drop-shadow(0 12px 28px rgba(255,61,90,0.4))" }}
+            />
+          </motion.div>
+          <motion.div animate={{ y: [0, -14, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/can-crop-pineapple.png"
+              alt="Canette Ananas Asian Merveille"
+              style={{ height: "clamp(240px, 32vw, 360px)", width: "auto", filter: "drop-shadow(0 16px 36px rgba(245,196,0,0.45))" }}
+            />
+          </motion.div>
+          <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4.0, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/can-crop-grape.png"
+              alt="Canette Raisin Asian Merveille"
+              style={{ height: "clamp(200px, 26vw, 300px)", width: "auto", filter: "drop-shadow(0 12px 28px rgba(139,92,246,0.4))" }}
             />
           </motion.div>
           {/* Colorful shadow */}
