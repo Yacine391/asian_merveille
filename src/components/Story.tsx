@@ -100,16 +100,20 @@ export default function Story() {
             style={{ color: "#475569" }}
           >
             <p>
-              Asian Merveille est née d&apos;une passion pour les saveurs exotiques et la fraîcheur
-              naturelle. Nous avons voulu créer une boisson qui transporte, qui évoque les marchés
-              tropicaux et les fruits gorgés de soleil.
+              Asian Merveille est née pour les sportifs et les personnes actives qui refusent de faire
+              des compromis sur le goût. Une boisson énergisante qui te booste sans les ingrédients
+              artificiels des energy drinks classiques.
             </p>
             <p>
               Chaque canette contient{" "}
               <strong style={{ color: "#0f172a" }}>60% de jus de fruit pur</strong>,
-              sans colorants artificiels, sans conservateurs. Juste la nature, pétillante et délicieuse.
+              sans colorants artificiels, sans conservateurs — juste l&apos;énergie de la nature,
+              pétillante et délicieuse.
             </p>
-            <p>Un voyage tropical dans chaque gorgée — Exotique, Frais, Pétillant.</p>
+            <p>
+              Parfaite avant l&apos;entraînement, pendant une longue journée ou pour rester concentré
+              — Exotique, Frais, Naturellement Énergisant.
+            </p>
           </motion.div>
 
           <motion.a

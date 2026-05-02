@@ -48,23 +48,23 @@ export default function CTA() {
           transition={{ duration: 0.7 }}
         >
           <p className="text-sm font-semibold tracking-[0.3em] uppercase mb-6"
-            style={{ color: "var(--pineapple)" }}>
+            style={{ color: "#0891b2" }}>
             Commander
           </p>
           <h2 className="leading-none mb-6"
             style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(3rem, 10vw, 7rem)", color: "#0f172a" }}>
-            PRÊT POUR
+            PRÊT À
             <br />
             <span style={{
               background: "linear-gradient(90deg, #f5c400, #ff6b47, #ff3d5a)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
             }}>
-              LE VOYAGE ?
+              PERFORMER ?
             </span>
           </h2>
           <p className="text-base max-w-lg mx-auto leading-relaxed mb-12" style={{ color: "#64748b" }}>
-            Contactez-nous pour passer commande ou pour toute information sur nos produits.
-            Disponibles en quantité limitée.
+            Commandez votre boisson énergisante naturelle. Sport, travail, éveil — Asian Merveille
+            booste ta journée sans compromis.
           </p>
 
           {submitted ? (

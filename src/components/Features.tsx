@@ -8,30 +8,30 @@ import { FruitFloat } from "./FruitFloat";
 const features = [
   {
     num: "01",
-    title: "EXOTIQUE",
-    sub: "Des saveurs venues d'ailleurs",
-    desc: "Inspiré par les fruits tropicaux d'Asie, chaque saveur est une invitation au voyage. Pastèque, Ananas, Raisin — trois destinations dans une canette.",
+    title: "BOOST",
+    sub: "Énergie naturelle instantanée",
+    desc: "60% de jus de fruit pur pour un boost d'énergie immédiat et durable. Sans caféine artificielle, sans taurine — juste la puissance des fruits exotiques.",
     color: "#ff3d5a",
-    photo: "https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=500&q=75",
-    photoAlt: "Pastèque tranchée fraîche",
+    photo: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=500&q=75",
+    photoAlt: "Athlète en plein entraînement",
   },
   {
     num: "02",
-    title: "FRAIS",
-    sub: "Naturellement rafraîchissant",
-    desc: "Aucun conservateur, aucun colorant artificiel. Juste le goût authentique des fruits frais, préservé naturellement pour une fraîcheur maximale.",
+    title: "NATUREL",
+    sub: "100% sans artificiels",
+    desc: "Aucun colorant, aucun conservateur, aucun édulcorant artificiel. Juste l'énergie pure des fruits tropicaux pour performer au naturel.",
     color: "#059669",
     photo: "https://images.unsplash.com/photo-1546173159-315724a31696?w=500&q=75",
-    photoAlt: "Jus tropical frais",
+    photoAlt: "Jus tropical naturel",
   },
   {
     num: "03",
-    title: "PÉTILLANT",
-    sub: "L'effervescence de la vie",
-    desc: "Des bulles fines et légères qui dansent sur votre palais. L'effervescence parfaite pour sublimer chaque saveur et rendre chaque gorgée unique.",
+    title: "FOCUS",
+    sub: "Concentration & Éveil",
+    desc: "Les sucres naturels des fruits maintiennent ton énergie sans les crashes. Idéal pour les sessions de travail intensives, les examens ou les entraînements.",
     color: "#7c3aed",
     photo: "https://images.unsplash.com/photo-1517638851339-a711cfcf3279?w=500&q=75",
-    photoAlt: "Eau pétillante avec bulles",
+    photoAlt: "Concentration et performance",
   },
 ];
 
@@ -157,7 +157,7 @@ export default function Features() {
                 color: "#0f172a",
               }}
             >
-              TROIS MOTS.{" "}
+              ÉNERGIE.{" "}
               <span
                 style={{
                   background: "linear-gradient(90deg, #ff6b47, #f5c400)",
@@ -166,7 +166,7 @@ export default function Features() {
                   backgroundClip: "text",
                 }}
               >
-                UNE VÉRITÉ.
+                NATURELLE.
               </span>
             </motion.h2>
           </div>

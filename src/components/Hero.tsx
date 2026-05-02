@@ -51,7 +51,7 @@ export default function Hero() {
           style={{ background: "rgba(255,255,255,0.7)", color: "#0f172a", border: "1px solid rgba(255,255,255,0.9)" }}
         >
           <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#22c55e" }} />
-          Nouveau — Disponible maintenant
+          Boisson Énergisante Naturelle — 60% Jus Pur
         </motion.div>
 
         {/* ── Text that was on the original image, now on the site ── */}
@@ -63,7 +63,7 @@ export default function Hero() {
             className="font-semibold tracking-[0.2em] uppercase text-sm md:text-base"
             style={{ color: "#0e7490" }}
           >
-            Un Voyage
+            Boisson Énergisante
           </motion.p>
         </div>
 
@@ -93,7 +93,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.55 }}
           className="flex items-center gap-3 mb-6"
         >
-          {["EXOTIQUE", "FRAIS", "PÉTILLANT"].map((word, i) => (
+          {["SPORT", "ÉNERGIE", "NATUREL"].map((word, i) => (
             <span key={word} className="flex items-center gap-3">
               <span
                 className="font-bold tracking-widest text-sm md:text-base uppercase px-3 py-1 rounded-full"
@@ -145,7 +145,7 @@ export default function Hero() {
           className="text-sm sm:text-base max-w-md leading-relaxed mb-8"
           style={{ color: "#334155" }}
         >
-          Jus pétillants 60% pur — trois saveurs, un seul voyage.
+          60% jus naturel pur — boostez vos entraînements, restez éveillé, performez au maximum.
         </motion.p>
 
         {/* CTAs */}

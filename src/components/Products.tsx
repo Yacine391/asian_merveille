@@ -4,58 +4,57 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { FruitFloat } from "./FruitFloat";
+import { WatermelonCard, PineappleCard, GrapeCard } from "./CardFruits";
 
 const flavors = [
   {
     name: "Pastèque",
     ghost: "PASTÈQUE",
-    english: "Watermelon Sparkling",
-    tagline: "Fraîcheur d'été",
+    english: "Watermelon Energy",
+    tagline: "Hydratation & Énergie",
     description:
-      "60% de jus de pastèque pur, légèrement pétillant. Un goût sucré et rafraîchissant qui évoque les chaudes journées d'été.",
+      "60% de jus de pastèque pur. Riche en électrolytes naturels pour une hydratation optimale pendant l'effort. Le boost rafraîchissant idéal avant ou après le sport.",
     accent: "#ff3d5a",
     bg: "linear-gradient(145deg, #fff1f3 0%, #ffe4e8 100%)",
     border: "rgba(255,61,90,0.2)",
+    canSrc: "/images/can-watermelon.png",
     ml: "250ml",
-    fruit: "watermelon" as const,
+    FruitComp: WatermelonCard,
   },
   {
     name: "Ananas",
     ghost: "ANANAS",
-    english: "Pineapple Sparkling",
-    tagline: "Voyage exotique",
+    english: "Pineapple Energy",
+    tagline: "Boost Tropical",
     description:
-      "60% de jus d'ananas pur, pétillant et exotique. La saveur tropicale par excellence qui transporte vos papilles.",
+      "60% de jus d'ananas pur. Vitamines C et énergie naturelle pour performer au maximum. Le shot tropical qui booste ta motivation et ta concentration.",
     accent: "#ca8a04",
     bg: "linear-gradient(145deg, #fefce8 0%, #fef3c7 100%)",
     border: "rgba(202,138,4,0.2)",
+    canSrc: "/images/can-pineapple.png",
     ml: "250ml",
-    fruit: "pineapple" as const,
+    FruitComp: PineappleCard,
     featured: true,
   },
   {
     name: "Raisin",
     ghost: "RAISIN",
-    english: "Grape Sparkling",
-    tagline: "Douceur pourpre",
+    english: "Grape Energy",
+    tagline: "Énergie & Concentration",
     description:
-      "60% de jus de raisin pur, subtilement pétillant. Un goût doux et fruité avec une touche d'élégance naturelle.",
+      "60% de jus de raisin pur. Antioxydants et sucres naturels pour maintenir ta concentration et ton énergie tout au long de la journée. Idéal pour rester éveillé.",
     accent: "#7c3aed",
     bg: "linear-gradient(145deg, #faf5ff 0%, #ede9fe 100%)",
     border: "rgba(124,58,237,0.2)",
+    canSrc: "/images/can-grape.png",
     ml: "260ml",
-    fruit: "grape" as const,
+    FruitComp: GrapeCard,
   },
 ];
-
-/* ── inline SVG fruit map ── */
-import { WatermelonCard, PineappleCard, GrapeCard } from "./CardFruits";
 
 function FlavorCard({ f, i }: { f: (typeof flavors)[number]; i: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-
-  const FruitComp = f.fruit === "watermelon" ? WatermelonCard : f.fruit === "pineapple" ? PineappleCard : GrapeCard;
 
   return (
     <motion.div
@@ -64,59 +63,77 @@ function FlavorCard({ f, i }: { f: (typeof flavors)[number]; i: number }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, delay: i * 0.14, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -8, transition: { duration: 0.25 } }}
-      className={`relative rounded-3xl p-8 flex flex-col overflow-hidden cursor-pointer group ${
-        f.featured ? "md:-mt-6 md:mb-6 ring-2" : ""
+      className={`relative rounded-3xl p-7 flex flex-col overflow-hidden cursor-pointer group ${
+        f.featured ? "md:-mt-6 md:mb-6" : ""
       }`}
       style={{
         background: f.bg,
         border: `1px solid ${f.border}`,
         boxShadow: f.featured
-          ? `0 20px 60px ${f.accent}22, 0 0 0 2px ${f.accent}40`
+          ? `0 24px 60px ${f.accent}28, 0 0 0 2px ${f.accent}35`
           : `0 4px 24px ${f.accent}12`,
-        ...(f.featured ? { "--tw-ring-color": f.accent } as React.CSSProperties : {}),
       }}
     >
-      {/* Ghost watermark text */}
+      {/* Ghost watermark */}
       <div
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
         aria-hidden="true"
       >
         <span
-          className="font-bold leading-none whitespace-nowrap"
           style={{
             fontFamily: "var(--font-bebas)",
-            fontSize: "clamp(5rem, 14vw, 9rem)",
+            fontSize: "clamp(5rem, 13vw, 8.5rem)",
             color: f.accent,
             opacity: 0.07,
-            letterSpacing: "0.05em",
+            letterSpacing: "0.06em",
+            whiteSpace: "nowrap",
           }}
         >
           {f.ghost}
         </span>
       </div>
 
-      {/* Featured badge */}
+      {/* Popular badge */}
       {f.featured && (
-        <div
-          className="absolute top-4 right-4 px-3 py-1 rounded-full text-white text-xs font-bold tracking-wider"
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={inView ? { scale: 1 } : {}}
+          transition={{ type: "spring", stiffness: 300, delay: 0.4 }}
+          className="absolute top-4 right-4 px-3 py-1 rounded-full text-white text-xs font-bold tracking-wider z-10"
           style={{ background: f.accent }}
         >
           POPULAIRE
-        </div>
+        </motion.div>
       )}
 
-      {/* Fruit illustration — animated float */}
-      <div className="flex justify-center mb-4 mt-2">
+      {/* Can image — main visual */}
+      <div className="relative flex justify-center items-end h-40 mb-2">
+        {/* Fruit SVG behind the can */}
+        <div className="absolute -bottom-2 opacity-20" aria-hidden="true">
+          <f.FruitComp size={90} />
+        </div>
         <motion.div
           animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+          transition={{ duration: 3 + i * 0.3, repeat: Infinity, ease: "easeInOut" }}
+          className="relative z-10"
         >
-          <FruitComp size={120} />
+          <Image
+            src={f.canSrc}
+            alt={`Canette Asian Merveille ${f.name}`}
+            width={130}
+            height={200}
+            className="h-36 w-auto object-contain drop-shadow-xl"
+          />
         </motion.div>
+        {/* Color halo under can */}
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-4 rounded-full blur-lg"
+          style={{ background: f.accent, opacity: 0.25 }}
+        />
       </div>
 
       {/* Dot + label */}
-      <div className="flex items-center gap-2 mb-1">
+      <div className="flex items-center gap-2 mb-1 mt-2">
         <span className="w-2.5 h-2.5 rounded-full" style={{ background: f.accent }} />
         <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: f.accent }}>
           {f.english}
@@ -125,27 +142,23 @@ function FlavorCard({ f, i }: { f: (typeof flavors)[number]; i: number }) {
 
       <h3
         className="leading-none mb-1"
-        style={{ fontFamily: "var(--font-bebas)", fontSize: "2.6rem", color: "#0f172a" }}
+        style={{ fontFamily: "var(--font-bebas)", fontSize: "2.4rem", color: "#0f172a" }}
       >
         {f.name}
       </h3>
-      <p className="text-sm mb-3 font-medium" style={{ color: f.accent }}>
+      <p className="text-sm mb-3 font-semibold" style={{ color: f.accent }}>
         {f.tagline}
       </p>
-      <p className="text-sm leading-relaxed flex-1 mb-6" style={{ color: "#475569" }}>
+      <p className="text-sm leading-relaxed flex-1 mb-5" style={{ color: "#475569" }}>
         {f.description}
       </p>
 
-      {/* Stats bar */}
+      {/* Stats */}
       <div
         className="flex items-center justify-around pt-4"
         style={{ borderTop: `1px solid ${f.accent}20` }}
       >
-        {[
-          ["60%", "Jus pur"],
-          [f.ml, "Volume"],
-          ["0%", "Alcool"],
-        ].map(([val, lbl]) => (
+        {[["60%", "Jus pur"], [f.ml, "Volume"], ["0%", "Alcool"]].map(([val, lbl]) => (
           <div key={lbl} className="text-center">
             <div
               className="leading-none text-2xl"
@@ -165,10 +178,7 @@ function FlavorCard({ f, i }: { f: (typeof flavors)[number]; i: number }) {
         className="absolute inset-0 rounded-3xl pointer-events-none"
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        style={{
-          background: `radial-gradient(circle at 50% 0%, ${f.accent}10, transparent 60%)`,
-        }}
+        style={{ background: `radial-gradient(circle at 50% 0%, ${f.accent}10, transparent 60%)` }}
       />
     </motion.div>
   );
@@ -182,21 +192,12 @@ export default function Products() {
     <section
       id="saveurs"
       className="relative py-24 sm:py-32 px-6"
-      style={{
-        background: "linear-gradient(160deg, #faf5ff 0%, #ede9fe 40%, #fdf4ff 100%)",
-      }}
+      style={{ background: "linear-gradient(160deg, #faf5ff 0%, #ede9fe 40%, #fdf4ff 100%)" }}
       aria-label="Nos saveurs"
     >
-      {/* Rainbow top line */}
-      <div
-        className="absolute top-0 left-0 right-0 h-1"
-        style={{
-          background:
-            "linear-gradient(90deg, #ff3d5a, #f5c400, #22c55e, #06b6d4, #8b5cf6)",
-        }}
-      />
+      <div className="absolute top-0 left-0 right-0 h-1"
+        style={{ background: "linear-gradient(90deg, #ff3d5a, #f5c400, #22c55e, #06b6d4, #8b5cf6)" }} />
 
-      {/* Fruits from sides */}
       <FruitFloat fruit="leaf"   side="left"  top="10%" size={110} delay={0}   rotation={-20} />
       <FruitFloat fruit="orange" side="left"  top="60%" size={90}  delay={0.3} rotation={15}  />
       <FruitFloat fruit="grape"  side="right" top="8%"  size={105} delay={0.1} rotation={10}  />
@@ -212,7 +213,7 @@ export default function Products() {
             className="text-sm font-semibold tracking-[0.3em] uppercase mb-4"
             style={{ color: "#ca8a04" }}
           >
-            Nos Saveurs
+            Boissons Énergisantes
           </motion.p>
           <div className="overflow-hidden">
             <motion.h2
@@ -227,15 +228,13 @@ export default function Products() {
               }}
             >
               CHOISISSEZ{" "}
-              <span
-                style={{
-                  background: "linear-gradient(90deg, #ff3d5a, #f5c400, #8b5cf6)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                VOTRE VOYAGE
+              <span style={{
+                background: "linear-gradient(90deg, #ff3d5a, #f5c400, #8b5cf6)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
+                VOTRE BOOST
               </span>
             </motion.h2>
           </div>
@@ -243,10 +242,10 @@ export default function Products() {
             initial={{ opacity: 0 }}
             animate={headInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-base max-w-lg mx-auto"
+            className="text-base max-w-xl mx-auto"
             style={{ color: "#64748b" }}
           >
-            Trois saveurs exotiques, 100% naturelles, pétillantes à 60% de jus pur.
+            Trois saveurs exotiques, 60% de jus naturel — énergie pure pour le sport, la performance et l&apos;éveil.
           </motion.p>
         </div>
 
@@ -256,28 +255,6 @@ export default function Products() {
             <FlavorCard key={f.name} f={f} i={i} />
           ))}
         </div>
-
-        {/* Can image centred below cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mt-16 flex justify-center"
-        >
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Image
-              src="/images/cans-only.png"
-              alt="Les trois saveurs Asian Merveille"
-              width={380}
-              height={415}
-              className="w-full max-w-sm h-auto drop-shadow-2xl"
-            />
-          </motion.div>
-        </motion.div>
       </div>
     </section>
   );

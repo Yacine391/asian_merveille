@@ -28,8 +28,8 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
-              Jus pétillants exotiques. 60% de jus pur.
-              <br />Exotique, Frais, Pétillant.
+              Boisson énergisante naturelle. 60% de jus pur.
+              <br />Sport · Performance · Éveil.
             </p>
             {/* Flavor dots */}
             <div className="flex gap-2 mt-4">
@@ -84,7 +84,7 @@ export default function Footer() {
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 UN VOYAGE TROPICAL
               </p>
-              <p className="text-white/30 text-xs mt-1">Exotique · Frais · Pétillant</p>
+              <p className="text-white/30 text-xs mt-1">Sport · Performance · Naturel</p>
             </div>
           </div>
         </div>
