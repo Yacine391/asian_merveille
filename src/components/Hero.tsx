@@ -39,7 +39,6 @@ export default function Hero() {
               src="/images/hero-banner.png"
               alt="Asian Merveille — UN VOYAGE — Watermelon · Pineapple · Grape"
               style={{ width: "100%", height: "auto", display: "block" }}
-              priority="true"
             />
           </motion.div>
         </motion.div>
