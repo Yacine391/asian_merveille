@@ -7,24 +7,34 @@ import { FruitFloat } from "./FruitFloat";
 
 const photos = [
   {
-    src: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=75",
-    alt: "Athlète sportif en plein effort",
-    label: "SPORT",
-    color: "#059669",
+    src: "/images/lifestyle-raisin.png",
+    alt: "Cocktail raisin Asian Merveille",
+    label: "RAISIN",
+    color: "#7c3aed",
     span: "row-span-2",
+    local: true,
+  },
+  {
+    src: "/images/lifestyle-energie.png",
+    alt: "Énergie naturelle Asian Merveille",
+    label: "ÉNERGIE",
+    color: "#ca8a04",
+    span: "",
+    local: true,
+  },
+  {
+    src: "/images/lifestyle-fitness.png",
+    alt: "Fitness et énergie naturelle",
+    label: "FITNESS & ÉNERGIE",
+    color: "#059669",
+    span: "",
+    local: true,
   },
   {
     src: "https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=75",
     alt: "Jus d'ananas tropical frais",
     label: "ANANAS",
     color: "#ca8a04",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=600&q=75",
-    alt: "Cocktail raisin rafraîchissant",
-    label: "RAISIN",
-    color: "#8b5cf6",
     span: "",
   },
   {
@@ -35,17 +45,10 @@ const photos = [
     span: "",
   },
   {
-    src: "https://images.unsplash.com/photo-1544991875-5dc1b05f1571?w=600&q=75",
-    alt: "Fitness et énergie naturelle",
-    label: "ÉNERGIE",
-    color: "#0891b2",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=600&q=75",
-    alt: "Raisins frais antioxydants",
+    src: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=600&q=75",
+    alt: "Cocktail tropical rafraîchissant",
     label: "NATUREL",
-    color: "#7c3aed",
+    color: "#0891b2",
     span: "",
   },
 ];
