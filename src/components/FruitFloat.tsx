@@ -128,7 +128,7 @@ export function FruitFloat({ fruit, side, top, size = 90, delay = 0, rotation = 
       {/* Fruit — animates from off-screen */}
       <motion.div
         aria-hidden="true"
-        className="absolute pointer-events-none z-20"
+        className="absolute pointer-events-none z-20 hidden md:block"
         style={{ top, [side]: "-20px" }}
         initial={{ x: offscreen, opacity: 0, rotate: side === "left" ? -30 : 30 }}
         animate={isInView ? { x: 0, opacity: 1, rotate: rotation } : {}}

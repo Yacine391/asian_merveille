@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import Image from "next/image";
 import { useRef } from "react";
 import { FruitFloat } from "./FruitFloat";
 
@@ -169,24 +168,24 @@ export default function Story() {
             </motion.div>
           ))}
 
-          {/* Cans image in stats grid */}
+          {/* 3 individual cans */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={statsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="col-span-2 flex justify-center mt-2"
+            className="col-span-2 flex items-end justify-center gap-2 mt-2"
           >
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Image
-                src="/images/cans-only.png"
-                alt="Canettes Asian Merveille"
-                width={280}
-                height={305}
-                className="w-full max-w-[220px] h-auto drop-shadow-xl"
-              />
+            <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/can-crop-watermelon.png" alt="Canette Pastèque" style={{ height: "130px", width: "auto", filter: "drop-shadow(0 6px 14px rgba(255,61,90,0.35))" }} />
+            </motion.div>
+            <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/can-crop-pineapple.png" alt="Canette Ananas" style={{ height: "162px", width: "auto", filter: "drop-shadow(0 8px 18px rgba(245,196,0,0.4))" }} />
+            </motion.div>
+            <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4.0, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/can-crop-grape.png" alt="Canette Raisin" style={{ height: "130px", width: "auto", filter: "drop-shadow(0 6px 14px rgba(139,92,246,0.35))" }} />
             </motion.div>
           </motion.div>
         </div>

@@ -3,57 +3,29 @@
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
-import { FruitFloat } from "./FruitFloat";
 
-const photos = [
+const panels = [
   {
     src: "/images/lifestyle-raisin.png",
     alt: "Cocktail raisin Asian Merveille",
     label: "RAISIN",
-    color: "#7c3aed",
-    span: "row-span-2",
-    local: true,
+    gradient: "linear-gradient(to top, rgba(44,0,90,0.9) 0%, rgba(44,0,90,0.45) 38%, transparent 70%)",
   },
   {
     src: "/images/lifestyle-energie.png",
     alt: "Énergie naturelle Asian Merveille",
     label: "ÉNERGIE",
-    color: "#ca8a04",
-    span: "",
-    local: true,
+    gradient: "linear-gradient(to top, rgba(80,50,0,0.9) 0%, rgba(80,50,0,0.45) 38%, transparent 70%)",
   },
   {
     src: "/images/lifestyle-fitness.png",
     alt: "Fitness et énergie naturelle",
-    label: "FITNESS & ÉNERGIE",
-    color: "#059669",
-    span: "",
-    local: true,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=75",
-    alt: "Jus d'ananas tropical frais",
-    label: "ANANAS",
-    color: "#ca8a04",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=600&q=75",
-    alt: "Pastèque fraîche tranchée",
-    label: "PASTÈQUE",
-    color: "#ff3d5a",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=600&q=75",
-    alt: "Cocktail tropical rafraîchissant",
-    label: "NATUREL",
-    color: "#0891b2",
-    span: "",
+    label: "FITNESS ET\nÉNERGIE NATURELLE",
+    gradient: "linear-gradient(to top, rgba(2,50,30,0.9) 0%, rgba(2,50,30,0.45) 38%, transparent 70%)",
   },
 ];
 
-function PhotoCard({ p, i }: { p: (typeof photos)[number]; i: number }) {
+function PanelCard({ p, i }: { p: (typeof panels)[number]; i: number }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -63,56 +35,62 @@ function PhotoCard({ p, i }: { p: (typeof photos)[number]; i: number }) {
       href="https://www.instagram.com/_asianmerveille/"
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, scale: 0.88, y: 20 }}
+      initial={{ opacity: 0, scale: 0.95, y: 24 }}
       animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: i * 0.09, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ scale: 1.03, transition: { duration: 0.22 } }}
-      className={`relative rounded-2xl overflow-hidden cursor-pointer group ${p.span}`}
-      style={{ aspectRatio: p.span === "row-span-2" ? "3/4" : "1/1" }}
-      aria-label={`Voir ${p.label} sur Instagram`}
+      transition={{ duration: 0.65, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ scale: 1.02, transition: { duration: 0.25 } }}
+      className="relative overflow-hidden rounded-2xl cursor-pointer group block"
+      style={{ height: "clamp(280px, 55vh, 640px)" }}
+      aria-label={`Voir ${p.label.replace("\n", " ")} sur Instagram`}
     >
       <Image
         src={p.src}
         alt={p.alt}
         fill
-        className="object-cover transition-transform duration-700 group-hover:scale-110"
-        sizes="(max-width: 768px) 50vw, 33vw"
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        sizes="(max-width: 768px) 100vw, 33vw"
       />
 
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0 transition-opacity duration-300"
-        style={{
-          background: `linear-gradient(to top, ${p.color}cc 0%, transparent 55%)`,
-        }}
-      />
+      <div className="absolute inset-0" style={{ background: p.gradient }} />
 
-      {/* Label */}
-      <div className="absolute bottom-4 left-4">
-        <div className="font-bold text-sm tracking-widest uppercase text-white">
+      <div className="absolute bottom-6 left-6">
+        <div
+          style={{
+            fontFamily: "var(--font-bebas)",
+            fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+            color: "white",
+            lineHeight: 1.1,
+            letterSpacing: "0.04em",
+            whiteSpace: "pre-line",
+          }}
+        >
           {p.label}
         </div>
-        <div className="text-white/60 text-xs">Asian Merveille</div>
+        <div
+          style={{
+            color: "rgba(255,255,255,0.55)",
+            fontSize: "0.7rem",
+            marginTop: "4px",
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+          }}
+        >
+          Asian Merveille
+        </div>
       </div>
 
-      {/* Instagram icon on hover */}
-      <motion.div
-        className="absolute inset-0 flex items-center justify-center"
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.2 }}
-      >
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div
-          className="w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm"
-          style={{ background: "rgba(255,255,255,0.25)" }}
+          className="w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm"
+          style={{ background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.35)" }}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" strokeWidth="1.8" />
             <circle cx="12" cy="12" r="5" stroke="white" strokeWidth="1.8" />
             <circle cx="17.5" cy="6.5" r="1" fill="white" />
           </svg>
         </div>
-      </motion.div>
+      </div>
     </motion.a>
   );
 }
@@ -124,25 +102,11 @@ export default function Gallery() {
   return (
     <section
       className="relative py-24 sm:py-32 px-6"
-      style={{
-        background: "linear-gradient(160deg, #fdf4ff 0%, #ede9fe 40%, #e0f2fe 100%)",
-      }}
+      style={{ background: "linear-gradient(160deg, #fdf4ff 0%, #ede9fe 40%, #e0f2fe 100%)" }}
       aria-label="Galerie Instagram"
     >
-      {/* Rainbow top line */}
-      <div
-        className="absolute top-0 left-0 right-0 h-1"
-        style={{
-          background:
-            "linear-gradient(90deg, #ff3d5a, #f5c400, #22c55e, #06b6d4, #8b5cf6)",
-        }}
-      />
-
-      {/* Fruits from sides */}
-      <FruitFloat fruit="grape"      side="left"  top="15%" size={105} delay={0}   rotation={10}  />
-      <FruitFloat fruit="leaf"       side="left"  top="65%" size={85}  delay={0.3} rotation={-15} />
-      <FruitFloat fruit="watermelon" side="right" top="10%" size={115} delay={0.1} rotation={-8}  />
-      <FruitFloat fruit="orange"     side="right" top="60%" size={100} delay={0.4} rotation={12}  />
+      <div className="absolute top-0 left-0 right-0 h-1"
+        style={{ background: "linear-gradient(90deg, #ff3d5a, #f5c400, #22c55e, #06b6d4, #8b5cf6)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
@@ -169,14 +133,12 @@ export default function Gallery() {
               }}
             >
               REJOIGNEZ{" "}
-              <span
-                style={{
-                  background: "linear-gradient(90deg, #8b5cf6, #06b6d4)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
+              <span style={{
+                background: "linear-gradient(90deg, #8b5cf6, #06b6d4)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
                 LE VOYAGE
               </span>
             </motion.h2>
@@ -200,10 +162,10 @@ export default function Gallery() {
           </motion.a>
         </div>
 
-        {/* Photo grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-          {photos.map((p, i) => (
-            <PhotoCard key={i} p={p} i={i} />
+        {/* 3 Panels */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+          {panels.map((p, i) => (
+            <PanelCard key={p.label} p={p} i={i} />
           ))}
         </div>
 

@@ -32,7 +32,7 @@ export default function Hero() {
 
       {/* ── Watermelon slice — LEFT ── */}
       <motion.div
-        className="absolute pointer-events-none z-10"
+        className="absolute pointer-events-none z-10 hidden md:block"
         style={{ top: "18%", left: "-20px" }}
         initial={{ x: -280, opacity: 0, rotate: 15 }}
         animate={{ x: 0, opacity: 1, rotate: 8 }}
@@ -55,7 +55,7 @@ export default function Hero() {
 
       {/* ── Grape cluster — RIGHT ── */}
       <motion.div
-        className="absolute pointer-events-none z-10"
+        className="absolute pointer-events-none z-10 hidden md:block"
         style={{ top: "55%", right: "-20px" }}
         initial={{ x: 280, opacity: 0, rotate: -10 }}
         animate={{ x: 0, opacity: 1, rotate: -6 }}
@@ -78,7 +78,7 @@ export default function Hero() {
 
       {/* ── Pineapple — RIGHT, top ── */}
       <motion.div
-        className="absolute pointer-events-none z-10"
+        className="absolute pointer-events-none z-10 hidden md:block"
         style={{ top: "12%", right: "30px" }}
         initial={{ x: 200, opacity: 0, rotate: -12 }}
         animate={{ x: 0, opacity: 1, rotate: -8 }}
