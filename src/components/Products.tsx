@@ -4,7 +4,6 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { FruitFloat } from "./FruitFloat";
-import { WatermelonCard, PineappleCard, GrapeCard } from "./CardFruits";
 
 const flavors = [
   {
@@ -15,11 +14,9 @@ const flavors = [
     description:
       "60% de jus de pastèque pur. Riche en électrolytes naturels pour une hydratation optimale pendant l'effort. Le boost rafraîchissant idéal avant ou après le sport.",
     accent: "#ff3d5a",
-    bg: "linear-gradient(145deg, #fff1f3 0%, #ffe4e8 100%)",
-    border: "rgba(255,61,90,0.2)",
-    canSrc: "/images/can-watermelon.png",
+    cardBg: "linear-gradient(145deg, #ff8fa3 0%, #ff3d5a 60%, #c0392b 100%)",
+    canIndex: 0,
     ml: "250ml",
-    FruitComp: WatermelonCard,
   },
   {
     name: "Ananas",
@@ -28,12 +25,10 @@ const flavors = [
     tagline: "Boost Tropical",
     description:
       "60% de jus d'ananas pur. Vitamines C et énergie naturelle pour performer au maximum. Le shot tropical qui booste ta motivation et ta concentration.",
-    accent: "#ca8a04",
-    bg: "linear-gradient(145deg, #fefce8 0%, #fef3c7 100%)",
-    border: "rgba(202,138,4,0.2)",
-    canSrc: "/images/can-pineapple.png",
+    accent: "#d97706",
+    cardBg: "linear-gradient(145deg, #fde68a 0%, #f5c400 55%, #d97706 100%)",
+    canIndex: 1,
     ml: "250ml",
-    FruitComp: PineappleCard,
     featured: true,
   },
   {
@@ -44,13 +39,44 @@ const flavors = [
     description:
       "60% de jus de raisin pur. Antioxydants et sucres naturels pour maintenir ta concentration et ton énergie tout au long de la journée. Idéal pour rester éveillé.",
     accent: "#7c3aed",
-    bg: "linear-gradient(145deg, #faf5ff 0%, #ede9fe 100%)",
-    border: "rgba(124,58,237,0.2)",
-    canSrc: "/images/can-grape.png",
+    cardBg: "linear-gradient(145deg, #c4b5fd 0%, #8b5cf6 55%, #6d28d9 100%)",
+    canIndex: 2,
     ml: "260ml",
-    FruitComp: GrapeCard,
   },
 ];
+
+/** Shows one can from the 3-can combined image using CSS cropping */
+function CanCrop({ canIndex, className }: { canIndex: 0 | 1 | 2; className?: string }) {
+  // The combined image is 486×530 with 3 cans side by side.
+  // We stretch the image to 300% width and shift left by canIndex * 100%
+  // so only the relevant can is visible through the overflow:hidden container.
+  const offsets = ["0%", "-100%", "-200%"];
+
+  return (
+    <div
+      className={`relative overflow-hidden ${className ?? ""}`}
+      style={{ height: "220px" }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          width: "300%",
+          left: offsets[canIndex],
+          top: 0,
+          bottom: 0,
+        }}
+      >
+        <Image
+          src="/images/cans-only.png"
+          alt="Canette Asian Merveille"
+          fill
+          style={{ objectFit: "contain", objectPosition: "center" }}
+          sizes="(max-width: 768px) 90vw, 40vw"
+        />
+      </div>
+    </div>
+  );
+}
 
 function FlavorCard({ f, i }: { f: (typeof flavors)[number]; i: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -63,18 +89,17 @@ function FlavorCard({ f, i }: { f: (typeof flavors)[number]; i: number }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, delay: i * 0.14, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -8, transition: { duration: 0.25 } }}
-      className={`relative rounded-3xl p-7 flex flex-col overflow-hidden cursor-pointer group ${
+      className={`relative rounded-3xl overflow-hidden cursor-pointer group flex flex-col ${
         f.featured ? "md:-mt-6 md:mb-6" : ""
       }`}
       style={{
-        background: f.bg,
-        border: `1px solid ${f.border}`,
+        background: f.cardBg,
         boxShadow: f.featured
-          ? `0 24px 60px ${f.accent}28, 0 0 0 2px ${f.accent}35`
-          : `0 4px 24px ${f.accent}12`,
+          ? `0 24px 60px ${f.accent}50`
+          : `0 8px 32px ${f.accent}28`,
       }}
     >
-      {/* Ghost watermark */}
+      {/* Ghost watermark text */}
       <div
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
         aria-hidden="true"
@@ -82,9 +107,9 @@ function FlavorCard({ f, i }: { f: (typeof flavors)[number]; i: number }) {
         <span
           style={{
             fontFamily: "var(--font-bebas)",
-            fontSize: "clamp(5rem, 13vw, 8.5rem)",
-            color: f.accent,
-            opacity: 0.07,
+            fontSize: "clamp(4rem, 12vw, 7.5rem)",
+            color: "white",
+            opacity: 0.12,
             letterSpacing: "0.06em",
             whiteSpace: "nowrap",
           }}
@@ -100,86 +125,62 @@ function FlavorCard({ f, i }: { f: (typeof flavors)[number]; i: number }) {
           animate={inView ? { scale: 1 } : {}}
           transition={{ type: "spring", stiffness: 300, delay: 0.4 }}
           className="absolute top-4 right-4 px-3 py-1 rounded-full text-white text-xs font-bold tracking-wider z-10"
-          style={{ background: f.accent }}
+          style={{ background: "rgba(255,255,255,0.25)", border: "1px solid rgba(255,255,255,0.4)" }}
         >
           POPULAIRE
         </motion.div>
       )}
 
-      {/* Can image — main visual */}
-      <div className="relative flex justify-center items-end h-40 mb-2">
-        {/* Fruit SVG behind the can */}
-        <div className="absolute -bottom-2 opacity-20" aria-hidden="true">
-          <f.FruitComp size={90} />
+      {/* ── Can image (CSS crop) ── */}
+      <motion.div
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 3.2 + i * 0.3, repeat: Infinity, ease: "easeInOut" }}
+        className="relative z-10 mt-4"
+      >
+        <CanCrop canIndex={f.canIndex as 0 | 1 | 2} />
+      </motion.div>
+
+      {/* ── Info ── */}
+      <div className="relative z-10 p-6 flex flex-col flex-1">
+        {/* Dot + english label */}
+        <div className="flex items-center gap-2 mb-1">
+          <span className="w-2.5 h-2.5 rounded-full bg-white/70" />
+          <span className="text-xs font-semibold tracking-widest uppercase text-white/80">
+            {f.english}
+          </span>
         </div>
-        <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 3 + i * 0.3, repeat: Infinity, ease: "easeInOut" }}
-          className="relative z-10"
+
+        <h3
+          className="leading-none mb-1 text-white"
+          style={{ fontFamily: "var(--font-bebas)", fontSize: "2.4rem" }}
         >
-          <Image
-            src={f.canSrc}
-            alt={`Canette Asian Merveille ${f.name}`}
-            width={130}
-            height={200}
-            className="h-36 w-auto object-contain drop-shadow-xl"
-          />
-        </motion.div>
-        {/* Color halo under can */}
+          {f.name}
+        </h3>
+        <p className="text-sm mb-3 font-semibold text-white/80">{f.tagline}</p>
+        <p className="text-sm leading-relaxed flex-1 mb-5 text-white/70">{f.description}</p>
+
+        {/* Stats */}
         <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-4 rounded-full blur-lg"
-          style={{ background: f.accent, opacity: 0.25 }}
-        />
-      </div>
-
-      {/* Dot + label */}
-      <div className="flex items-center gap-2 mb-1 mt-2">
-        <span className="w-2.5 h-2.5 rounded-full" style={{ background: f.accent }} />
-        <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: f.accent }}>
-          {f.english}
-        </span>
-      </div>
-
-      <h3
-        className="leading-none mb-1"
-        style={{ fontFamily: "var(--font-bebas)", fontSize: "2.4rem", color: "#0f172a" }}
-      >
-        {f.name}
-      </h3>
-      <p className="text-sm mb-3 font-semibold" style={{ color: f.accent }}>
-        {f.tagline}
-      </p>
-      <p className="text-sm leading-relaxed flex-1 mb-5" style={{ color: "#475569" }}>
-        {f.description}
-      </p>
-
-      {/* Stats */}
-      <div
-        className="flex items-center justify-around pt-4"
-        style={{ borderTop: `1px solid ${f.accent}20` }}
-      >
-        {[["60%", "Jus pur"], [f.ml, "Volume"], ["0%", "Alcool"]].map(([val, lbl]) => (
-          <div key={lbl} className="text-center">
-            <div
-              className="leading-none text-2xl"
-              style={{ fontFamily: "var(--font-bebas)", color: f.accent }}
-            >
-              {val}
+          className="flex items-center justify-around pt-4"
+          style={{ borderTop: "1px solid rgba(255,255,255,0.2)" }}
+        >
+          {[["60%", "Jus pur"], [f.ml, "Volume"], ["0%", "Alcool"]].map(([val, lbl]) => (
+            <div key={lbl} className="text-center">
+              <div
+                className="leading-none text-2xl text-white"
+                style={{ fontFamily: "var(--font-bebas)" }}
+              >
+                {val}
+              </div>
+              <div className="text-xs mt-0.5 text-white/50">{lbl}</div>
             </div>
-            <div className="text-xs mt-0.5" style={{ color: "#94a3b8" }}>
-              {lbl}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Hover shimmer */}
-      <motion.div
-        className="absolute inset-0 rounded-3xl pointer-events-none"
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        style={{ background: `radial-gradient(circle at 50% 0%, ${f.accent}10, transparent 60%)` }}
-      />
+      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{ background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 60%)" }} />
     </motion.div>
   );
 }
