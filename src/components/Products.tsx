@@ -48,9 +48,9 @@ const flavors = [
 ];
 
 const canImages = [
-  "/images/can-crop-watermelon.png",
-  "/images/can-crop-pineapple.png",
-  "/images/can-crop-grape.png",
+  "/images/can-new-watermelon.png",
+  "/images/can-new-pineapple.png",
+  "/images/can-new-grape.png",
 ];
 
 function CanImage({ canIndex, className }: { canIndex: 0 | 1 | 2; className?: string }) {
@@ -64,7 +64,8 @@ function CanImage({ canIndex, className }: { canIndex: 0 | 1 | 2; className?: st
           height: "100%",
           width: "auto",
           objectFit: "contain",
-          filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.35))",
+          filter: "drop-shadow(0 12px 24px rgba(0,0,0,0.25))",
+          mixBlendMode: "multiply",
         }}
       />
     </div>
