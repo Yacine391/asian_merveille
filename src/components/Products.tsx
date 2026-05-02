@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import Image from "next/image";
 import { useRef } from "react";
 import { FruitFloat } from "./FruitFloat";
 
@@ -45,35 +44,26 @@ const flavors = [
   },
 ];
 
-/** Shows one can from the 3-can combined image using CSS cropping */
-function CanCrop({ canIndex, className }: { canIndex: 0 | 1 | 2; className?: string }) {
-  // The combined image is 486×530 with 3 cans side by side.
-  // We stretch the image to 300% width and shift left by canIndex * 100%
-  // so only the relevant can is visible through the overflow:hidden container.
-  const offsets = ["0%", "-100%", "-200%"];
+const canImages = [
+  "/images/can-crop-watermelon.png",
+  "/images/can-crop-pineapple.png",
+  "/images/can-crop-grape.png",
+];
 
+function CanImage({ canIndex, className }: { canIndex: 0 | 1 | 2; className?: string }) {
   return (
-    <div
-      className={`relative overflow-hidden ${className ?? ""}`}
-      style={{ height: "220px" }}
-    >
-      <div
+    <div className={`flex justify-center items-end ${className ?? ""}`} style={{ height: "260px", paddingBottom: "8px" }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={canImages[canIndex]}
+        alt="Canette Asian Merveille"
         style={{
-          position: "absolute",
-          width: "300%",
-          left: offsets[canIndex],
-          top: 0,
-          bottom: 0,
+          height: "100%",
+          width: "auto",
+          objectFit: "contain",
+          filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.35))",
         }}
-      >
-        <Image
-          src="/images/cans-only.png"
-          alt="Canette Asian Merveille"
-          fill
-          style={{ objectFit: "contain", objectPosition: "center" }}
-          sizes="(max-width: 768px) 90vw, 40vw"
-        />
-      </div>
+      />
     </div>
   );
 }
@@ -137,7 +127,7 @@ function FlavorCard({ f, i }: { f: (typeof flavors)[number]; i: number }) {
         transition={{ duration: 3.2 + i * 0.3, repeat: Infinity, ease: "easeInOut" }}
         className="relative z-10 mt-4"
       >
-        <CanCrop canIndex={f.canIndex as 0 | 1 | 2} />
+        <CanImage canIndex={f.canIndex as 0 | 1 | 2} />
       </motion.div>
 
       {/* ── Info ── */}
