@@ -15,8 +15,8 @@ const items = [
 export default function Gallery() {
   return (
     <section
-      className="relative py-24 sm:py-32 px-6 overflow-hidden"
-      style={{ background: "var(--bg-gallery)" }}
+      className="relative py-24 sm:py-32 px-6"
+      style={{ background: "linear-gradient(160deg, #fdf4ff 0%, #ede9fe 40%, #e0f2fe 100%)" }}
       aria-label="Galerie Instagram"
     >
       {/* BG */}
@@ -48,8 +48,8 @@ export default function Gallery() {
             style={{ color: "var(--grape)" }}>
             Instagram
           </p>
-          <h2 className="text-white leading-none mb-6"
-            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(3rem, 9vw, 6rem)" }}>
+          <h2 className="leading-none mb-6"
+            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(3rem, 9vw, 6rem)", color: "#0f172a" }}>
             REJOIGNEZ
             <br />
             <span style={{
@@ -60,7 +60,8 @@ export default function Gallery() {
             </span>
           </h2>
           <a href="https://www.instagram.com/_asianmerveille/" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors duration-200 cursor-pointer text-sm">
+            className="inline-flex items-center gap-2 transition-colors duration-200 cursor-pointer text-sm"
+            style={{ color: "#64748b" }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.8" />
               <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.8" />
@@ -91,21 +92,21 @@ export default function Gallery() {
             >
               <div className="absolute inset-0 flex items-end p-5"
                 style={{
-                  background: `radial-gradient(circle at 35% 35%, ${item.color}55, ${item.color}20 50%, #080818)`,
-                  border: `1px solid ${item.color}25`,
+                  background: `radial-gradient(circle at 35% 35%, ${item.color}40, ${item.color}18 50%, rgba(255,255,255,0.85))`,
+                  border: `1px solid ${item.color}30`,
                 }}>
                 <div>
                   <div className="font-bold text-sm tracking-widest uppercase mb-0.5"
                     style={{ color: item.color }}>
                     {item.label}
                   </div>
-                  <div className="text-white/25 text-xs">Asian Merveille</div>
+                  <div className="text-xs" style={{ color: "#94a3b8" }}>Asian Merveille</div>
                 </div>
               </div>
 
               {/* Hover overlay */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: "rgba(0,0,0,0.5)" }}>
+                style={{ background: "rgba(255,255,255,0.4)" }}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-white" aria-hidden="true">
                   <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.5" />
                   <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.5" />
@@ -125,7 +126,8 @@ export default function Gallery() {
           className="text-center mt-10"
         >
           <a href="https://www.instagram.com/_asianmerveille/" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 border border-white/15 text-white font-semibold rounded-full hover:border-[var(--grape)]/60 hover:text-[var(--grape)] transition-all duration-200 cursor-pointer">
+            className="inline-flex items-center gap-3 px-8 py-4 font-semibold rounded-full transition-all duration-200 cursor-pointer hover:scale-105"
+            style={{ border: "1px solid rgba(139,92,246,0.3)", color: "#7c3aed", background: "rgba(139,92,246,0.06)" }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.8" />
               <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.8" />

@@ -27,7 +27,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-4 left-4 right-4 z-50 flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-300 ${
         scrolled
-          ? "bg-black/80 backdrop-blur-lg border border-white/10"
+          ? "bg-white/90 backdrop-blur-lg border border-gray-200 shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -36,7 +36,7 @@ export default function Navbar() {
         <div className="w-8 h-8 rounded-full bg-[var(--pineapple)] flex items-center justify-center text-black font-bold text-sm font-[var(--font-bebas)] tracking-wider">
           AM
         </div>
-        <span className="font-[var(--font-bebas)] text-xl tracking-widest text-white">
+        <span className="font-[var(--font-bebas)] text-xl tracking-widest" style={{ color: "#0f172a" }}>
           Asian Merveille
         </span>
       </a>
@@ -47,7 +47,10 @@ export default function Navbar() {
           <li key={link.href}>
             <a
               href={link.href}
-              className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200 cursor-pointer relative group"
+              className="text-sm font-medium transition-colors duration-200 cursor-pointer relative group"
+              style={{ color: "#475569" }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#0f172a")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#475569")}
             >
               {link.label}
               <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[var(--pineapple)] transition-all duration-300 group-hover:w-full" />
@@ -71,9 +74,9 @@ export default function Navbar() {
         aria-label="Menu"
         aria-expanded={open}
       >
-        <span className={`block w-6 h-0.5 bg-white transition-all duration-200 ${open ? "rotate-45 translate-y-2" : ""}`} />
-        <span className={`block w-6 h-0.5 bg-white transition-all duration-200 ${open ? "opacity-0" : ""}`} />
-        <span className={`block w-6 h-0.5 bg-white transition-all duration-200 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+        <span className={`block w-6 h-0.5 transition-all duration-200 ${open ? "rotate-45 translate-y-2" : ""}`} style={{ background: "#0f172a" }} />
+        <span className={`block w-6 h-0.5 transition-all duration-200 ${open ? "opacity-0" : ""}`} style={{ background: "#0f172a" }} />
+        <span className={`block w-6 h-0.5 transition-all duration-200 ${open ? "-rotate-45 -translate-y-2" : ""}`} style={{ background: "#0f172a" }} />
       </button>
 
       {/* Mobile menu */}
@@ -84,14 +87,15 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 right-0 mt-2 bg-black/95 backdrop-blur-lg rounded-2xl border border-white/10 p-6 flex flex-col gap-4 md:hidden"
+            className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-lg rounded-2xl border border-gray-200 shadow-lg p-6 flex flex-col gap-4 md:hidden"
           >
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-white/80 hover:text-white font-medium transition-colors duration-200 cursor-pointer py-2"
+                className="font-medium transition-colors duration-200 cursor-pointer py-2"
+                style={{ color: "#475569" }}
               >
                 {link.label}
               </a>

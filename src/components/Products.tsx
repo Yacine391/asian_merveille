@@ -10,9 +10,9 @@ const flavors = [
     tagline: "Fraîcheur d'été",
     description: "60% de jus de pastèque pur, légèrement pétillant. Un goût sucré et rafraîchissant qui évoque les chaudes journées d'été.",
     badge: "#ff3d5a",
-    cardBg: "linear-gradient(145deg, #3d0014 0%, #1a000a 100%)",
-    border: "rgba(255,61,90,0.3)",
-    glow: "rgba(255,61,90,0.2)",
+    cardBg: "linear-gradient(145deg, #fff1f3 0%, #ffe4e8 100%)",
+    border: "rgba(255,61,90,0.25)",
+    glow: "rgba(255,61,90,0.1)",
     ml: "250ml",
     emoji: "🍉",
   },
@@ -21,10 +21,10 @@ const flavors = [
     english: "Pineapple",
     tagline: "Voyage exotique",
     description: "60% de jus d'ananas pur, pétillant et exotique. La saveur tropicale par excellence qui transporte vos papilles.",
-    badge: "#f5c400",
-    cardBg: "linear-gradient(145deg, #2e2000 0%, #131000 100%)",
-    border: "rgba(245,196,0,0.3)",
-    glow: "rgba(245,196,0,0.2)",
+    badge: "#ca8a04",
+    cardBg: "linear-gradient(145deg, #fefce8 0%, #fef3c7 100%)",
+    border: "rgba(202,138,4,0.25)",
+    glow: "rgba(245,196,0,0.12)",
     ml: "250ml",
     emoji: "🍍",
     featured: true,
@@ -34,10 +34,10 @@ const flavors = [
     english: "Grape",
     tagline: "Douceur dorée",
     description: "60% de jus de raisin pur, subtilement pétillant. Un goût doux et fruité avec une touche d'élégance naturelle.",
-    badge: "#8b5cf6",
-    cardBg: "linear-gradient(145deg, #1a0840 0%, #0a0420 100%)",
-    border: "rgba(139,92,246,0.3)",
-    glow: "rgba(139,92,246,0.2)",
+    badge: "#7c3aed",
+    cardBg: "linear-gradient(145deg, #faf5ff 0%, #ede9fe 100%)",
+    border: "rgba(124,58,237,0.25)",
+    glow: "rgba(139,92,246,0.1)",
     ml: "260ml",
     emoji: "🍇",
   },
@@ -47,8 +47,8 @@ export default function Products() {
   return (
     <section
       id="saveurs"
-      className="relative py-24 sm:py-32 px-6 overflow-hidden"
-      style={{ background: "var(--bg-products)" }}
+      className="relative py-24 sm:py-32 px-6"
+      style={{ background: "linear-gradient(160deg, #faf5ff 0%, #ede9fe 40%, #fdf4ff 100%)" }}
       aria-label="Nos saveurs"
     >
       {/* ── Background glows ── */}
@@ -80,8 +80,8 @@ export default function Products() {
             style={{ color: "var(--pineapple)" }}>
             Nos Saveurs
           </p>
-          <h2 className="leading-none text-white mb-4"
-            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(3rem, 9vw, 7rem)" }}>
+          <h2 className="leading-none mb-4"
+            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(3rem, 9vw, 7rem)", color: "#0f172a" }}>
             CHOISISSEZ
             <br />
             <span style={{
@@ -91,7 +91,7 @@ export default function Products() {
               VOTRE VOYAGE
             </span>
           </h2>
-          <p className="text-white/50 text-base max-w-lg mx-auto">
+          <p className="text-base max-w-lg mx-auto" style={{ color: "#64748b" }}>
             Trois saveurs exotiques, 100% naturelles, pétillantes à 60% de jus pur.
           </p>
         </motion.div>
@@ -136,19 +136,19 @@ export default function Products() {
                 </span>
               </div>
 
-              <h3 className="text-white leading-none mb-1"
-                style={{ fontFamily: "var(--font-bebas)", fontSize: "2.4rem" }}>
+              <h3 className="leading-none mb-1"
+                style={{ fontFamily: "var(--font-bebas)", fontSize: "2.4rem", color: "#0f172a" }}>
                 {f.name}
               </h3>
-              <p className="text-sm mb-4" style={{ color: f.badge, opacity: 0.8 }}>{f.tagline}</p>
-              <p className="text-white/55 text-sm leading-relaxed flex-1 mb-6">{f.description}</p>
+              <p className="text-sm mb-4" style={{ color: f.badge }}>{f.tagline}</p>
+              <p className="text-sm leading-relaxed flex-1 mb-6" style={{ color: "#475569" }}>{f.description}</p>
 
               {/* Stats */}
-              <div className="flex items-center justify-between pt-4 border-t border-white/10">
+              <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                 {[["60%", "Jus pur"], [f.ml, "Volume"], ["0%", "Alcool"]].map(([val, lbl]) => (
                   <div key={lbl} className="text-center">
                     <div className="leading-none text-2xl" style={{ fontFamily: "var(--font-bebas)", color: f.badge }}>{val}</div>
-                    <div className="text-white/40 text-xs mt-0.5">{lbl}</div>
+                    <div className="text-xs mt-0.5" style={{ color: "#94a3b8" }}>{lbl}</div>
                   </div>
                 ))}
               </div>

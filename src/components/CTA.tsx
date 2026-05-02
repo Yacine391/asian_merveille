@@ -20,8 +20,8 @@ export default function CTA() {
   return (
     <section
       id="contact"
-      className="relative py-24 sm:py-32 px-6 overflow-hidden"
-      style={{ background: "var(--bg-cta)" }}
+      className="relative py-24 sm:py-32 px-6"
+      style={{ background: "linear-gradient(160deg, #ecfeff 0%, #cffafe 40%, #f0fdf4 100%)" }}
       aria-label="Commander"
     >
       {/* BG */}
@@ -51,8 +51,8 @@ export default function CTA() {
             style={{ color: "var(--pineapple)" }}>
             Commander
           </p>
-          <h2 className="text-white leading-none mb-6"
-            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(3rem, 10vw, 7rem)" }}>
+          <h2 className="leading-none mb-6"
+            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(3rem, 10vw, 7rem)", color: "#0f172a" }}>
             PRÊT POUR
             <br />
             <span style={{
@@ -62,7 +62,7 @@ export default function CTA() {
               LE VOYAGE ?
             </span>
           </h2>
-          <p className="text-white/50 text-base max-w-lg mx-auto leading-relaxed mb-12">
+          <p className="text-base max-w-lg mx-auto leading-relaxed mb-12" style={{ color: "#64748b" }}>
             Contactez-nous pour passer commande ou pour toute information sur nos produits.
             Disponibles en quantité limitée.
           </p>
@@ -93,7 +93,7 @@ export default function CTA() {
                   { id: "email", label: "Email", type: "email", placeholder: "votre@email.com", key: "email" },
                 ].map((field) => (
                   <div key={field.id}>
-                    <label htmlFor={field.id} className="block text-white/60 text-sm font-medium mb-2">
+                    <label htmlFor={field.id} className="block text-sm font-medium mb-2" style={{ color: "#475569" }}>
                       {field.label}
                     </label>
                     <input
@@ -103,19 +103,20 @@ export default function CTA() {
                       value={form[field.key as "name" | "email"]}
                       onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
                       placeholder={field.placeholder}
-                      className="w-full px-4 py-3 rounded-xl text-white text-sm focus:outline-none transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all duration-200"
                       style={{
-                        background: "rgba(255,255,255,0.04)",
-                        border: "1px solid rgba(255,255,255,0.1)",
+                        background: "rgba(255,255,255,0.8)",
+                        border: "1px solid #e2e8f0",
+                        color: "#0f172a",
                       }}
-                      onFocus={(e) => (e.target.style.borderColor = "rgba(245,196,0,0.5)")}
-                      onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                      onFocus={(e) => (e.target.style.borderColor = "#06b6d4")}
+                      onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
                     />
                   </div>
                 ))}
               </div>
               <div>
-                <label htmlFor="message" className="block text-white/60 text-sm font-medium mb-2">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: "#475569" }}>Message</label>
                 <textarea
                   id="message"
                   required
@@ -123,10 +124,10 @@ export default function CTA() {
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder="Votre commande ou votre message..."
-                  className="w-full px-4 py-3 rounded-xl text-white text-sm focus:outline-none transition-all duration-200 resize-none"
-                  style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}
-                  onFocus={(e) => (e.target.style.borderColor = "rgba(245,196,0,0.5)")}
-                  onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                  className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all duration-200 resize-none"
+                  style={{ background: "rgba(255,255,255,0.8)", border: "1px solid #e2e8f0", color: "#0f172a" }}
+                  onFocus={(e) => (e.target.style.borderColor = "#06b6d4")}
+                  onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
                 />
               </div>
               <button

@@ -14,8 +14,8 @@ export default function Story() {
   return (
     <section
       id="histoire"
-      className="relative py-24 sm:py-32 px-6 overflow-hidden"
-      style={{ background: "var(--bg-story)" }}
+      className="relative py-24 sm:py-32 px-6"
+      style={{ background: "linear-gradient(160deg, #ecfdf5 0%, #d1fae5 50%, #cffafe 100%)" }}
       aria-label="Notre histoire"
     >
       {/* BG glows */}
@@ -47,8 +47,8 @@ export default function Story() {
             style={{ color: "var(--cyan)" }}>
             Notre Histoire
           </p>
-          <h2 className="text-white leading-none mb-8"
-            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(2.8rem, 7vw, 6rem)" }}>
+          <h2 className="leading-none mb-8"
+            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(2.8rem, 7vw, 6rem)", color: "#0f172a" }}>
             L&apos;ASIE RENCONTRE
             <br />
             <span style={{
@@ -58,7 +58,7 @@ export default function Story() {
               LA MAGIE
             </span>
           </h2>
-          <div className="space-y-5 text-white/60 text-base leading-relaxed">
+          <div className="space-y-5 text-base leading-relaxed" style={{ color: "#475569" }}>
             <p>
               Asian Merveille est née d&apos;une passion pour les saveurs exotiques et la fraîcheur
               naturelle. Nous avons voulu créer une boisson qui transporte, qui évoque les marchés
@@ -66,7 +66,7 @@ export default function Story() {
             </p>
             <p>
               Chaque canette contient{" "}
-              <strong className="text-white">60% de jus de fruit pur</strong>,
+              <strong style={{ color: "#0f172a" }}>60% de jus de fruit pur</strong>,
               sans colorants artificiels, sans conservateurs. Juste la nature, pétillante et délicieuse.
             </p>
             <p>Un voyage tropical dans chaque gorgée — Exotique, Frais, Pétillant.</p>
@@ -108,7 +108,7 @@ export default function Story() {
                 style={{ fontFamily: "var(--font-bebas)", fontSize: "3.5rem", color: s.color }}>
                 {s.value}
               </div>
-              <div className="text-white/50 text-sm font-medium">{s.label}</div>
+              <div className="text-sm font-medium" style={{ color: "#64748b" }}>{s.label}</div>
             </motion.div>
           ))}
         </motion.div>

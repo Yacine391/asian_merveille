@@ -51,8 +51,8 @@ export default function Features() {
   return (
     <section
       id="experience"
-      className="relative py-24 sm:py-32 px-6 overflow-hidden"
-      style={{ background: "var(--bg-features)" }}
+      className="relative py-24 sm:py-32 px-6"
+      style={{ background: "linear-gradient(160deg, #fffbeb 0%, #fef3c7 40%, #fff1f2 100%)" }}
       aria-label="Notre expérience"
     >
       {/* BG glows */}
@@ -86,8 +86,8 @@ export default function Features() {
             style={{ color: "var(--coral)" }}>
             L&apos;Expérience
           </p>
-          <h2 className="text-white leading-none"
-            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(3rem, 9vw, 7rem)" }}>
+          <h2 className="leading-none"
+            style={{ fontFamily: "var(--font-bebas)", fontSize: "clamp(3rem, 9vw, 7rem)", color: "#0f172a" }}>
             TROIS MOTS.
             <br />
             <span style={{
@@ -110,8 +110,9 @@ export default function Features() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="relative group p-8 rounded-3xl hover:scale-[1.02] transition-transform duration-300"
               style={{
-                background: `${f.color}08`,
-                border: `1px solid ${f.color}20`,
+                background: `${f.color}0d`,
+                border: `1px solid ${f.color}30`,
+                boxShadow: `0 4px 20px ${f.color}10`,
               }}
             >
               {/* Number */}
@@ -126,11 +127,11 @@ export default function Features() {
                 {f.icon}
               </div>
 
-              <h3 className="text-white mb-1" style={{ fontFamily: "var(--font-bebas)", fontSize: "2.2rem" }}>
+              <h3 className="mb-1" style={{ fontFamily: "var(--font-bebas)", fontSize: "2.2rem", color: "#0f172a" }}>
                 {f.title}
               </h3>
               <p className="text-sm font-semibold mb-4" style={{ color: f.color }}>{f.sub}</p>
-              <p className="text-white/50 text-sm leading-relaxed">{f.desc}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>{f.desc}</p>
 
               {/* Animated bottom line */}
               <div className="mt-8 h-px w-0 group-hover:w-full transition-all duration-500"
