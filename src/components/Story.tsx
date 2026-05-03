@@ -177,15 +177,15 @@ export default function Story() {
           >
             <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/can-watermelon.png" alt="Canette Pastèque" style={{ height: "130px", width: "auto", filter: "drop-shadow(0 6px 14px rgba(255,61,90,0.4))" }} />
+              <img src="/images/can-new-watermelon.png" alt="Canette Pastèque" style={{ height: "130px", width: "auto", filter: "drop-shadow(0 6px 14px rgba(255,61,90,0.35))", mixBlendMode: "multiply" }} />
             </motion.div>
             <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/can-pineapple.png" alt="Canette Ananas" style={{ height: "162px", width: "auto", filter: "drop-shadow(0 8px 18px rgba(245,196,0,0.5))" }} />
+              <img src="/images/can-new-pineapple.png" alt="Canette Ananas" style={{ height: "162px", width: "auto", filter: "drop-shadow(0 8px 18px rgba(245,196,0,0.45))", mixBlendMode: "multiply" }} />
             </motion.div>
             <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4.0, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/can-grape.png" alt="Canette Raisin" style={{ height: "130px", width: "auto", filter: "drop-shadow(0 6px 14px rgba(139,92,246,0.4))" }} />
+              <img src="/images/can-new-grape.png" alt="Canette Raisin" style={{ height: "130px", width: "auto", filter: "drop-shadow(0 6px 14px rgba(139,92,246,0.35))", mixBlendMode: "multiply" }} />
             </motion.div>
           </motion.div>
         </div>
