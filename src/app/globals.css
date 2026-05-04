@@ -10,9 +10,9 @@
 /* Mobile : banner en background de la section, img masquée */
 @media (max-width: 767px) {
   .hero-section {
-    background-image: url('/images/hero-banner.png') !important;
-    background-size: 100% auto !important;
-    background-position: top center !important;
+    background-image: url('/images/hero-banner-mobile.png') !important;
+    background-size: cover !important;
+    background-position: center center !important;
     background-repeat: no-repeat !important;
   }
   .hero-banner-img {
