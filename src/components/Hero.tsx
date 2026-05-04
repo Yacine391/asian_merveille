@@ -40,7 +40,7 @@ export default function Hero() {
           initial={{ scale: 0.97, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center"
+          style={{ display: "flex", justifyContent: "center" }}
         >
           <motion.div
             animate={{ y: [0, -8, 0] }}
@@ -50,8 +50,7 @@ export default function Hero() {
             <img
               src="/images/hero-banner.png"
               alt="Asian Merveille — UN VOYAGE — Watermelon · Pineapple · Grape"
-              className="h-[58vh] w-auto max-w-none md:h-auto md:w-full"
-              style={{ display: "block" }}
+              className="hero-banner-img"
             />
           </motion.div>
         </motion.div>

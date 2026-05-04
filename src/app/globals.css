@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+/* Hero banner — mobile responsive */
+.hero-banner-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 767px) {
+  .hero-banner-img {
+    width: auto;
+    height: clamp(280px, 58vh, 500px);
+    max-width: none;
+  }
+}
+
 :root {
   --watermelon: #ff3d5a;
   --pineapple:  #f5c400;
