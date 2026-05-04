@@ -12,20 +12,20 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden"
       /* Gradient identique aux bords de l'image → pas de jointure visible */
       style={{ background: "linear-gradient(110deg, #9edbc8 0%, #c4ecd4 32%, #e8f4c0 58%, #f5e898 80%, #f0d060 100%)" }}
       aria-label="Section héros"
     >
       {/* ── Bord gauche large : couvre le logo baked-in + fond seamless ── */}
-      <div className="absolute inset-y-0 left-0 z-20 pointer-events-none"
+      <div className="hero-desktop-overlay absolute inset-y-0 left-0 z-20 pointer-events-none"
         style={{
           width: "clamp(260px, 24vw, 380px)",
           background: "linear-gradient(to right, #9edbc8 78%, transparent 100%)",
         }} />
 
       {/* ── Bord droit : fondu crème → transparent ── */}
-      <div className="absolute inset-y-0 right-0 z-20 pointer-events-none"
+      <div className="hero-desktop-overlay absolute inset-y-0 right-0 z-20 pointer-events-none"
         style={{
           width: "clamp(120px, 12vw, 200px)",
           background: "linear-gradient(to left, #f0d060 60%, transparent 100%)",

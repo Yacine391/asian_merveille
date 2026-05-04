@@ -1,17 +1,25 @@
 @import "tailwindcss";
 
-/* Hero banner — mobile responsive */
+/* Hero banner */
 .hero-banner-img {
   display: block;
   width: 100%;
   height: auto;
 }
+
+/* Mobile : banner en background de la section, img masquée */
 @media (max-width: 767px) {
+  .hero-section {
+    background-image: url('/images/hero-banner.png') !important;
+    background-size: 100% auto !important;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+  }
   .hero-banner-img {
-    width: 100%;
-    height: 62vh;
-    object-fit: cover;
-    object-position: center center;
+    display: none;
+  }
+  .hero-desktop-overlay {
+    display: none;
   }
 }
 
