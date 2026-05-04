@@ -34,13 +34,12 @@ export default function Hero() {
       {/* ── Image hero (parallax + floating) ── */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 w-full overflow-hidden"
+        className="relative z-10 w-full"
       >
         <motion.div
           initial={{ scale: 0.97, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-          style={{ display: "flex", justifyContent: "center" }}
         >
           <motion.div
             animate={{ y: [0, -8, 0] }}
