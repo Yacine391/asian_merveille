@@ -21,6 +21,9 @@
   .hero-desktop-overlay {
     display: none;
   }
+  .hero-ctas {
+    bottom: 22% !important;
+  }
 }
 
 :root {

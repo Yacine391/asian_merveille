@@ -61,7 +61,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col sm:flex-row gap-4 items-center"
+        className="hero-ctas absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col sm:flex-row gap-4 items-center"
       >
         <a href="#saveurs"
           className="px-8 py-4 rounded-full font-bold text-white text-base min-w-[180px] text-center transition-all duration-200 hover:scale-105 shadow-xl"
